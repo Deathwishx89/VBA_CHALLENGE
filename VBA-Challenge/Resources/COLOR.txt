@@ -1,0 +1,25 @@
+Sub colorrulles()
+
+    Selection.FormatConditions.Add Type:=xlCellValue, Operator:=xlGreaterEqual _
+        , Formula1:="=0"
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1).Interior
+        .PatternColorIndex = xlAutomatic
+        .COLOR = 5287936
+        .TintAndShade = 0
+    End With
+    Selection.FormatConditions(1).StopIfTrue = False
+    Selection.FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, _
+        Formula1:="=0"
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1).Interior
+        .PatternColorIndex = xlAutomatic
+        .COLOR = 255
+        .TintAndShade = 0
+    End With
+    Selection.FormatConditions(1).StopIfTrue = False
+    Range("M2").Select
+     Selection.AutoFill Destination:=Range("M2:M2836")
+    Range("M2:M2836").Select
+
+End Sub

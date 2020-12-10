@@ -1,0 +1,31 @@
+
+Sub Volume()
+
+  Dim Bucket As String
+
+  Dim water As Double
+  water = 0
+  
+  Dim Worksheet As Integer
+  Worksheet = 2
+
+  For i = 2 To 705714
+
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+      water = water + Cells(i, 7).Value
+    
+      
+      Range("N" & Worksheet).Value = water
+ 
+      Worksheet = Worksheet + 1
+      water = 0
+    Else
+      water = water + Cells(i, 7).Value
+     
+
+    End If
+
+  Next i
+
+End Sub

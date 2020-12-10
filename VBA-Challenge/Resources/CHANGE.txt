@@ -1,0 +1,10 @@
+Sub CHANGE()
+
+    Range("M2").Select
+    ActiveCell.FormulaR1C1 = "=RC[-1]-RC[-2]"
+    Range("M2").Select
+    Selection.AutoFill Destination:=Range("M2:M2836")
+    Range("M2:M2836").Select
+End Sub
+
+l2-k2

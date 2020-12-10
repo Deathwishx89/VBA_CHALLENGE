@@ -1,0 +1,68 @@
+Sub Ticks()
+
+  'TICK SYMBOL
+  Dim Ticker As String
+
+  'TO ADD VALUES
+  Dim OpenTotal As Double
+  OpenTotal = 0
+  
+  Dim CloseTotal As Double
+  CloseTotal = 0
+  
+ 
+
+  ' TO KEEP TRACK OF LOCTON OF WORKSHEET
+  Dim Worksheet As Integer
+  Worksheet = 2
+
+  ' Loop through all TICK SYMBOLS
+  For i = 2 To 705714
+
+    ' Check if we are still within the same TICK SYMBOL, if it is not...
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+      ' Set the TICK as name
+      Ticker = Cells(i, 1).Value
+
+      ' Add to the open and or close Total values
+      OpenTotal = OpenTotal + Cells(i, 3).Value
+      
+      CloseTotal = CloseTotal + Cells(i, 6).Value
+      
+     
+
+      ' Print the TICK SYBMOL in the Table
+      Range("J" & Worksheet).Value = Ticker
+
+      ' Print the AMOUNT  to the Table
+      Range("K" & Worksheet).Value = OpenTotal
+      
+      Range("L" & Worksheet).Value = CloseTotal
+      
+      
+
+      ' Add one to the table row
+      Worksheet = Worksheet + 1
+      
+      ' Reset the Open or close Total
+      OpenTotal = 0
+      CloseTotal = 0
+    
+      
+
+    ' If the cell immediately following a row is the TICK SYMBOL...
+    Else
+
+      ' Add to the AMOUNT Total
+      OpenTotal = OpenTotal + Cells(i, 3).Value
+      CloseTotal = CloseTotal + Cells(i, 6).Value
+     
+
+    End If
+
+  Next i
+
+End Sub
+
+
